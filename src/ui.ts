@@ -12,17 +12,18 @@ export function renderBookNodePageHTML(node: IBookNode): string {
 
 export function renderBreadcrumbsHTML(node: IBookNode): string {
   const pathToNode = getPathToNode(node);
-  const pathWithoutNode = pathToNode.slice(0, -1);
 
   return `
     <nav>
-      <ul>
-        ${pathWithoutNode.map(node => `
-          <li>
-            <a href="${nodePathname(node)}">${node.title}</a>
-          </li>
-        `).join('')}
-      </ul>
+      ${pathToNode
+        .map(n => {
+          if (n !== node) {
+            return `<a href="${nodePathname(n)}">${n.title}</a>`;
+          } else {
+            return n.title;
+          }
+        })
+        .join(' &gt; ')}
     </nav>
   `;
 }
