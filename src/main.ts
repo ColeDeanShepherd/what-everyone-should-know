@@ -1,5 +1,5 @@
 import { bookData } from './data.ts';
-import { renderBookNodeHTML } from './ui.ts';
+import { renderBookNodePageHTML } from './ui.ts';
 import { findNodeByPathname, generateRouteTable } from './router.ts';
 
 function run() {
@@ -14,7 +14,7 @@ function run() {
     return;
   }
   
-  appContainer.innerHTML = renderBookNodeHTML(currentNode);
+  appContainer.innerHTML = renderBookNodePageHTML(currentNode);
 }
 
 run();

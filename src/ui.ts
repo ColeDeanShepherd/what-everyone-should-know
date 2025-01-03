@@ -1,7 +1,31 @@
 import './style.css';
 
-import { IBookNode } from "./data";
+import { getAncestorsStartFromRoot as getPathToNode, IBookNode } from "./data";
 import { nodePathname } from './router';
+
+export function renderBookNodePageHTML(node: IBookNode): string {
+  return `
+    ${renderBreadcrumbsHTML(node)}
+    ${renderBookNodeHTML(node)}
+  `;
+}
+
+export function renderBreadcrumbsHTML(node: IBookNode): string {
+  const pathToNode = getPathToNode(node);
+  const pathWithoutNode = pathToNode.slice(0, -1);
+
+  return `
+    <nav>
+      <ul>
+        ${pathWithoutNode.map(node => `
+          <li>
+            <a href="${nodePathname(node)}">${node.title}</a>
+          </li>
+        `).join('')}
+      </ul>
+    </nav>
+  `;
+}
 
 export function renderBookNodeHTML(node: IBookNode): string {
   return `
