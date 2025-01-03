@@ -1,17 +1,9 @@
-import './style.css'
-import { setupCounter } from './counter.ts'
-import { bookData, IBookNode } from './data.ts';
+import { bookData } from './data.ts';
+import { renderBookNodeHTML } from './ui.ts';
 
-function renderBookNodeHTML(node: IBookNode): string {
-  return `
-    <div>
-      <h1>${node.title}</h1>
-      ${node.contents}
-      ${node.children.map(renderBookNodeHTML).join('')}
-    </div>
-  `;
+function run() {
+  const appContainer = document.querySelector<HTMLDivElement>('#app')!;
+  appContainer.innerHTML = renderBookNodeHTML(bookData);
 }
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = renderBookNodeHTML(bookData);
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+run();
