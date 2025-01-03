@@ -1,34 +1,3 @@
-
-# What Everyone Should Know
-
-By: Cole Shepherd
-
-## Introduction
-
-There's a lot we need to know to be happy, healthy, good people in today's society, and unfortunately we learn very little of it in school. This book is an attempt to cover **all** of this information at a high level in an unbiased way, and fill in the gaps left by our school system.
-
-## How to read
-
-This is an obvious one, and you already know how to do this if you're here. This is one of the most important skills to learn, and without it you cannot effectively function in the world or educate yourself with the vast body of written works in this world. Be sure your vocabulary and reading skills are at least at a high-school level.
-
-## How to write
-
-Another obvious one, and an extension of speaking and reading skills. Most people write daily in text messages, emails, and chat apps, so this is another absolutely essential skill. Be sure you can write grammatically correct, complete sentence that concisely convey your message.
-
-## Basic Math
-
-### Addition & subtraction
-
-
-
-#### Used for financial transactions
-### Multiplication & Division
-#### Dealing with groups of people & shared resources
-### Percentages
-### Exponentiation?
-### Using formulas?
-### PEMDAS?
-
 ## Personal Finance
 
 For better or for worse, money runs the world, and your knowledge of personal finance can be the difference between a comfortable life and a life of struggle.
