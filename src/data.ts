@@ -3,6 +3,22 @@ export interface IBookNode {
   title: string;
   contents: string;
   children: IBookNode[];
+  parent?: IBookNode;
+}
+
+function initParentLinks(node: IBookNode, parent?: IBookNode) {
+  node.parent = parent;
+  node.children.forEach(child => initParentLinks(child, node));
+}
+
+export function getAncestorsStartFromRoot(node: IBookNode): IBookNode[] {
+  const ancestors = [];
+  let current: IBookNode | undefined = node;
+  while (current) {
+    ancestors.unshift(current);
+    current = current.parent;
+  }
+  return ancestors;
 }
 
 export const bookData: IBookNode = {
@@ -75,3 +91,5 @@ export const bookData: IBookNode = {
     }
   ]
 };
+
+initParentLinks(bookData);
