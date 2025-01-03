@@ -28,12 +28,19 @@ export function renderBreadcrumbsHTML(node: IBookNode): string {
   `;
 }
 
+export function renderChildLinksHTML(node: IBookNode): string {
+  return `
+    <ul>
+      ${node.children.map(c => `<li>${renderBookNodeLinkHTML(c)}</li>`).join('')}
+    </ul>`;
+}
+
 export function renderBookNodeHTML(node: IBookNode): string {
   return `
     <div>
       <h1>${node.title}</h1>
       ${node.contents}
-      ${node.children.map(renderBookNodeLinkHTML).join('')}
+      ${renderChildLinksHTML(node)}
     </div>
   `;
 }
