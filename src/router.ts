@@ -15,23 +15,6 @@ export function nodePathname(node: IBookNode): string {
   return nodePathToPathname(getAncestorsStartFromRoot(node));
 }
 
-export function generateRouteTable(bookData: IBookNode): Map<string, IBookNode> {
-  const routeTable = new Map<string, IBookNode>();
-  const ancestorNodes: IBookNode[] = [];
-
-  function recurse(node: IBookNode) {
-    ancestorNodes.push(node);
-    const pathname = nodePathToPathname(ancestorNodes);
-    routeTable.set(pathname, node);
-    node.children.forEach(recurse);
-    ancestorNodes.pop();
-  }
-
-  recurse(bookData);
-
-  return routeTable;
-}
-
-export function findNodeByPathname(routeTable: Map<string, IBookNode>, pathname: string): IBookNode | undefined {
+export function getRenderRouteFn(routeTable: Map<string, () => string>, pathname: string): (() => string) | undefined {
   return routeTable.get(pathname);
 }
