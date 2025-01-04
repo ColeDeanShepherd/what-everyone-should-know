@@ -1,15 +1,21 @@
 import { bookData, IBookNode } from './data.ts';
 import { renderBookNodePageHTML } from './ui.ts';
-import { getRenderRouteFn, nodePathToPathname } from './router.ts';
+import { getRouteInfo, IRouteInfo, nodePathToPageTitle, nodePathToPathname } from './router.ts';
 
-export function generateRouteTable(bookData: IBookNode): Map<string, () => string> {
-  const routeTable = new Map<string, () => string>();
+export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo> {
+  const routeTable = new Map<string, IRouteInfo>();
   const ancestorNodes: IBookNode[] = [];
 
   function recurse(node: IBookNode) {
     ancestorNodes.push(node);
     const pathname = nodePathToPathname(ancestorNodes);
-    routeTable.set(pathname, () => renderBookNodePageHTML(node));
+    routeTable.set(
+      pathname,
+      {
+        title: nodePathToPageTitle(ancestorNodes),
+        renderHTMLFn: () => renderBookNodePageHTML(node)
+      }
+    );
     node.children.forEach(recurse);
     ancestorNodes.pop();
   }
@@ -23,16 +29,23 @@ function run() {
   const appContainer = document.querySelector<HTMLDivElement>('#app')!;
 
   const routeTable = generateRouteTable(bookData);
-  routeTable.set('/mind-map', () => `<p>Test</p>`);
+  routeTable.set(
+    '/mind-map',
+    {
+      title: 'Mind Map',
+      renderHTMLFn: () => `<p>Test</p>`
+    });
   const currentPathname = window.location.pathname;
-  const renderRouteFn = getRenderRouteFn(routeTable, currentPathname);
+  const routeInfo = getRouteInfo(routeTable, currentPathname);
 
-  if (renderRouteFn === undefined) {
-    appContainer.innerHTML = '<h1>404 Not Found</h1>';
+  if (routeInfo === undefined) {
+    document.title = 'Page Not Found - What Everyone Should Know';
+    appContainer.innerHTML = '<h1>Page Not Found</h1>';
     return;
   }
   
-  appContainer.innerHTML = renderRouteFn();
+  document.title = routeInfo.title;
+  appContainer.innerHTML = routeInfo.renderHTMLFn();
 }
 
 run();
