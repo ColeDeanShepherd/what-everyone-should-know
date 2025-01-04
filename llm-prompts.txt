@@ -1,0 +1,19 @@
+I'm writing a book called "What Everyone Should Know." Here are some examples of writing:
+
+```
+There's a lot we need to know to be happy, healthy, good people in today's society, and unfortunately we learn very little of it in school. This book is an attempt to cover all of this information at a high level in an unbiased way, and fill in the gaps left by our school system.
+```
+
+```
+Literacy > How to Read
+
+This is an obvious one, and you already know how to do this if you\'re here. This is one of the most important skills to learn, and without it you cannot effectively function in the world or educate yourself with the vast body of written works in this world. Be sure your vocabulary and reading skills are at least at a high-school level.
+```
+
+```
+Literacy > How to Write
+
+Another obvious one, and an extension of speaking and reading skills. Most people write daily in text messages, emails, and chat apps, so this is another absolutely essential skill. Be sure you can write grammatically correct, complete sentence that concisely convey your message.
+```
+
+Can you please write a brief blurb for "Basic Math > Numbers" in the same style?

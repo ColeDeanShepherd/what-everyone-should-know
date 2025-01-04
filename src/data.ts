@@ -50,16 +50,16 @@ export const bookData: IBookNode = {
     },
     {
       title: 'Basic Math',
-      contents: '',
+      contents: '<p>Basic math skills are fundamental for navigating daily life, from managing personal finances to understanding statistics in the news. Being comfortable with addition, subtraction, multiplication, division, fractions, and percentages is essential. These skills help you make informed decisions, solve everyday problems, and avoid being misled by misleading figures or calculations.</p>',
       children: [
         {
           title: 'Numbers',
-          contents: '',
+          contents: '<p>Numbers are the foundation of all math and essential for everyday life. They allow us to measure, compare, and make decisions based on quantity. At a minimum, you should be comfortable with whole numbers, fractions, decimals, and negative numbers. A solid grasp of numbers helps with budgeting, cooking, time management, and countless other daily tasks.</p>',
           children: []
         },
         {
           title: 'Addition',
-          contents: '',
+          contents: '<p>Addition is one of the most fundamental math skills, and it forms the basis for almost all other arithmetic operations. Being able to add quickly and accurately is essential for everyday tasks like budgeting, measuring, and comparing quantities. Make sure you\'re comfortable adding both small and large numbers, with and without a calculator, as this skill is a building block for more advanced math concepts.</p>',
           children: []
         },
         {
@@ -88,6 +88,106 @@ export const bookData: IBookNode = {
           children: []
         }
       ]
+    },
+    {
+      title: 'Personal Finance',
+      contents: '<p>For better or for worse, money runs the world, and your knowledge of personal finance can be the difference between a comfortable life and a life of struggle.</p>',
+      children: [
+        {
+          title: 'Budgeting',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Saving',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Investing',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Debt Management',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Credit Score',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Insurance',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Tax Planning',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Retirement Planning',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Insurance',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Investment Compounding',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Passive Index Funds',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Retirement Accounts',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Taxes',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Savings Accounts',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Emergency funds',
+          contents: `
+            <ul>
+              <li>In life, shit happens.</li>
+              <li>Plan for it.</li>
+              <li>Keep 3 months of expenses, or more, in the bank at all times.</li>
+            </ul>`,
+          children: []
+        },
+        {
+          title: 'Gambling',
+          contents: `
+            <ul>
+              <li>The house wins in the long run</li>
+              <li>Gambler's fallacy</li>
+            </ul>`,
+          children: []
+        }
+      ]
+    },
+    {
+      title: 'Health',
+      contents: '',
+      children: []
     }
   ]
 };
