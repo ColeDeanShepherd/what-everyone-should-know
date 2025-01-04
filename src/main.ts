@@ -23,6 +23,7 @@ function run() {
   const appContainer = document.querySelector<HTMLDivElement>('#app')!;
 
   const routeTable = generateRouteTable(bookData);
+  routeTable.set('/mind-map', () => `<p>Test</p>`);
   const currentPathname = window.location.pathname;
   const renderRouteFn = getRenderRouteFn(routeTable, currentPathname);
 
