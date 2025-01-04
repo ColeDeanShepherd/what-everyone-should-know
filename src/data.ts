@@ -188,6 +188,107 @@ export const bookData: IBookNode = {
       title: 'Health',
       contents: '',
       children: []
+    },
+    {
+      title: 'Mastering your Mind',
+      contents: '',
+      children: [
+        {
+          title: 'Dopamine',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Mind wandering',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Imagination',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Unconcious',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Ego',
+          contents: '<p>Be humble, the world is much bigger than you</p>',
+          children: []
+        },
+        {
+          title: 'Delayed gratification',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Two systems of thinking',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Logical fallacies',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Cognitive bias',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Critical thinking',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Ups &amp; downs',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Thought spirals',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Everything is temporary',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Coping mechanisms',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Stress, anxiety, depression',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Therapy',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Habits',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Hedonic treadmill',
+          contents: '',
+          children: []
+        },
+        {
+          title: 'Fears &amp; phobias',
+          contents: '',
+          children: []
+        },
+      ]
     }
   ]
 };

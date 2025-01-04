@@ -70,27 +70,7 @@
 
 ## Conflict management & resolution
 
-## Mastering your mind
-### Dopamine
-### Mind wandering
-### Imagination
-### Unconcious
-### Ego
-#### Be humble, the world is much bigger than you
-### Delayed gratification
-### Two systems of thinking
-### Logical fallacies
-### Cognitive bias
-### Critical thinking
-### Ups & downs
-### Thought spirals
-### Everything is temporary
-### Coping mechanisms
-### Stress, anxiety, depression
-### Therapy
-### Habits
-### Hedonic treadmill
-### Fears & phobias
+
 ## Basic economics
 ### Supply & demand
 ### Why is there currency?
