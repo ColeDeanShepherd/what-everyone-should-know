@@ -21,6 +21,30 @@ export function getPathToNode(node: IBookNode): IBookNode[] {
   return ancestors;
 }
 
+export function getOrderedNodes(node: IBookNode): IBookNode[] {
+  const orderedNodes: IBookNode[] = [];
+
+  function recurse(node: IBookNode) {
+    orderedNodes.push(node);
+    node.children.forEach(recurse);
+  }
+
+  recurse(node);
+
+  return orderedNodes;
+}
+
+export function getPrevAndNextNodes(node: IBookNode): { prevNode: IBookNode | undefined, nextNode: IBookNode | undefined } {
+  const orderedNodes = getOrderedNodes(bookData);
+  const nodeIndex = orderedNodes.indexOf(node);
+  const prevNodeIndex = nodeIndex - 1;
+  const nextNodeIndex = nodeIndex + 1;
+
+  return {
+    prevNode: (prevNodeIndex >= 0) ? orderedNodes[prevNodeIndex] : undefined,
+    nextNode: (nextNodeIndex < orderedNodes.length) ? orderedNodes[nextNodeIndex] : undefined
+  };
+}
 
 export const bookData: IBookNode = {
   title: 'What Everyone Should Know',

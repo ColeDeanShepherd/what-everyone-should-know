@@ -27,7 +27,7 @@ export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo>
 
 function run() {
   const appContainer = document.querySelector<HTMLDivElement>('#app')!;
-
+  
   const routeTable = generateRouteTable(bookData);
   routeTable.set(
     '/mind-map',

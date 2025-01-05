@@ -1,12 +1,17 @@
 import './style.css';
 
-import { getPathToNode as getPathToNode, IBookNode } from "./data";
+import { getPathToNode as getPathToNode, getPrevAndNextNodes, IBookNode } from "./data";
 import { nodePathname } from './router';
 
 export function renderBookNodePageHTML(node: IBookNode): string {
+  const { prevNode, nextNode } = getPrevAndNextNodes(node);
+  console.log(node, prevNode, nextNode);
+
   return `
     ${renderBreadcrumbsHTML(node)}
     ${renderBookNodeHTML(node)}
+    ${(prevNode !== undefined) ? `<a href="${nodePathname(prevNode)}">Previous Topic</a>` : ''}
+    ${(nextNode !== undefined) ? `<a href="${nodePathname(nextNode)}">Next Topic</a>` : ''}
   `;
 }
 
