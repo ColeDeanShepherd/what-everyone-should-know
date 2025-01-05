@@ -6,7 +6,7 @@ export interface IRouteInfo {
 }
 
 function titleToRoutePart(title: string): string {
-  return title.toLowerCase().replace(/ /g, '-');
+  return encodeURIComponent(title.toLowerCase().replace(/ /g, '-'));
 }
 
 export function nodePathToPathname(nodePath: IBookNode[]): string {

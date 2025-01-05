@@ -5,7 +5,6 @@ import { nodePathname } from './router';
 
 export function renderBookNodePageHTML(node: IBookNode): string {
   const { prevNode, nextNode } = getPrevAndNextNodes(node);
-  console.log(node, prevNode, nextNode);
 
   return `
     ${renderBreadcrumbsHTML(node)}

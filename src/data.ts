@@ -269,7 +269,7 @@ export const bookData: IBookNode = {
           children: []
         },
         {
-          title: 'Ups &amp; downs',
+          title: 'Ups and downs',
           contents: '',
           children: []
         },
@@ -309,7 +309,7 @@ export const bookData: IBookNode = {
           children: []
         },
         {
-          title: 'Fears &amp; phobias',
+          title: 'Fears and phobias',
           contents: '',
           children: []
         },
