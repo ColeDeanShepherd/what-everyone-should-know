@@ -1,4 +1,4 @@
-import { getAncestorsStartFromRoot, IBookNode } from "./data";
+import { getPathToNode, IBookNode } from "./data";
 
 export interface IRouteInfo {
   title: string;
@@ -17,7 +17,7 @@ export function nodePathToPathname(nodePath: IBookNode[]): string {
 }
 
 export function nodePathname(node: IBookNode): string {
-  return nodePathToPathname(getAncestorsStartFromRoot(node));
+  return nodePathToPathname(getPathToNode(node));
 }
 
 export function nodePathToPageTitle(nodePath: IBookNode[]): string {

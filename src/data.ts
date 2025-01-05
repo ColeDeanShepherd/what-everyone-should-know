@@ -11,7 +11,7 @@ function initParentLinks(node: IBookNode, parent?: IBookNode) {
   node.children.forEach(child => initParentLinks(child, node));
 }
 
-export function getAncestorsStartFromRoot(node: IBookNode): IBookNode[] {
+export function getPathToNode(node: IBookNode): IBookNode[] {
   const ancestors = [];
   let current: IBookNode | undefined = node;
   while (current) {
@@ -20,6 +20,7 @@ export function getAncestorsStartFromRoot(node: IBookNode): IBookNode[] {
   }
   return ancestors;
 }
+
 
 export const bookData: IBookNode = {
   title: 'What Everyone Should Know',

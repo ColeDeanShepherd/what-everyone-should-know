@@ -1,6 +1,6 @@
 import './style.css';
 
-import { getAncestorsStartFromRoot as getPathToNode, IBookNode } from "./data";
+import { getPathToNode as getPathToNode, IBookNode } from "./data";
 import { nodePathname } from './router';
 
 export function renderBookNodePageHTML(node: IBookNode): string {
