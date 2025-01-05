@@ -9,8 +9,10 @@ export function renderBookNodePageHTML(node: IBookNode): string {
   return `
     ${renderBreadcrumbsHTML(node)}
     ${renderBookNodeHTML(node)}
-    ${(prevNode !== undefined) ? `<a href="${nodePathname(prevNode)}">Previous Topic</a>` : ''}
-    ${(nextNode !== undefined) ? `<a href="${nodePathname(nextNode)}">Next Topic</a>` : ''}
+    <div class="prev-next-links">
+      <div>${(prevNode !== undefined) ? `<a href="${nodePathname(prevNode)}">Previous Topic</a>` : ''}</div>
+      <div>${(nextNode !== undefined) ? `<a href="${nodePathname(nextNode)}">Next Topic</a>` : ''}</div>
+    </div>
   `;
 }
 
@@ -38,7 +40,7 @@ export function renderBreadcrumbsHTML(node: IBookNode): string {
 
 export function renderChildLinksHTML(node: IBookNode): string {
   return `
-    <ul>
+    <ul class="child-links">
       ${node.children.map(c => `<li>${renderBookNodeLinkHTML(c)}</li>`).join('')}
     </ul>`;
 }
