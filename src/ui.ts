@@ -13,6 +13,10 @@ export function renderBookNodePageHTML(node: IBookNode): string {
 export function renderBreadcrumbsHTML(node: IBookNode): string {
   const pathToNode = getPathToNode(node);
 
+  if (pathToNode.length === 1) {
+    return '<nav></nav>';
+  }
+
   return `
     <nav>
       ${pathToNode
