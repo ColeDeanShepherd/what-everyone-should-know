@@ -1,8 +1,10 @@
-
 export interface IBookNode {
   title: string;
   contents: string;
   children: IBookNode[];
+
+  renderInInteractiveMapFn?: (node: IBookNode) => string;
+
   parent?: IBookNode;
 }
 
@@ -46,11 +48,21 @@ export function getPrevAndNextNodes(node: IBookNode): { prevNode: IBookNode | un
   };
 }
 
+export const interactiveMapWidthPx = 1280;
+export const interactiveMapHeightPx = 1280;
+
 export const bookData: IBookNode = {
   title: 'What Everyone Should Know',
   contents: `
     <h2>By: Cole Shepherd</h2>
     <p>There's a lot we need to know to be happy, healthy, good people in today's society, and unfortunately we learn very little of it in school. This book is an attempt to cover all of this information at a high level in an unbiased way, and fill in the gaps left by our school system.</p>`,
+  renderInInteractiveMapFn: (node) => {
+    return `
+      <div style="text-align: center;">
+        <h1 style="margin-top: 0; margin-bottom: 0;">${node.title}</h1>
+        <h2>By: Cole Shepherd</h2>
+      </div>`;
+  },
   children: [
     {
       title: 'Speech',
@@ -60,6 +72,22 @@ export const bookData: IBookNode = {
     {
       title: 'Literacy',
       contents: '',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">How to Read</div>
+                <div class="topic-icon">📖</div>
+              </li>
+              <li>
+                <div class="topic-name">How to Write</div>
+                <div class="topic-icon">✍️</div>
+              </li>
+            </ul>
+          </div>`;
+      },
       children: [
         {
           title: 'How to Read',

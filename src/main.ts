@@ -1,4 +1,4 @@
-import { bookData, IBookNode } from './data.ts';
+import { bookData, getOrderedNodes, IBookNode, interactiveMapHeightPx, interactiveMapWidthPx } from './data.ts';
 import { renderBookNodePageHTML } from './ui.ts';
 import { getRouteInfo, IRouteInfo, nodePathToPageTitle, nodePathToPathname } from './router.ts';
 
@@ -30,10 +30,23 @@ function run() {
   
   const routeTable = generateRouteTable(bookData);
   routeTable.set(
-    '/mind-map',
+    '/interactive-map',
     {
-      title: 'Mind Map',
-      renderHTMLFn: () => `<p>Test</p>`
+      title: 'Interactive Map - What Everyone Should Know',
+      renderHTMLFn: () => {
+        const container = document.createElement('div');
+        container.className = 'interactive-map';
+        container.style.width = `${interactiveMapWidthPx}px`;
+        container.style.height = `${interactiveMapHeightPx}px`;
+
+        getOrderedNodes(bookData).forEach(node => {
+          if (node.renderInInteractiveMapFn) {
+            container.innerHTML += node.renderInInteractiveMapFn(node);
+          }
+        });
+
+        return container.outerHTML;
+      }
     });
   const currentPathname = window.location.pathname;
   const routeInfo = getRouteInfo(routeTable, currentPathname);

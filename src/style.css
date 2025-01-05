@@ -34,10 +34,10 @@ h1 {
 }
 
 #app {
-  max-width: 1280px;
+  /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: center; */
 }
 
 .logo {
@@ -90,6 +90,41 @@ button:focus-visible {
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
+}
+
+.interactive-map {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  padding: 1em;
+
+  .broad-topic {
+    display: inline-block;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 1em;
+
+    h3 {
+      display: inline-block;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.3em 0.5em;
+      margin: 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  }
+
+  .topic-icon {
+    font-size: 2.5em;
+  }
 }
 
 @media (prefers-color-scheme: light) {

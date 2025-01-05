@@ -28,6 +28,5 @@ export function getRouteInfo(
   routeTable: Map<string, IRouteInfo>,
   pathname: string
 ): IRouteInfo | undefined {
-  console.log(routeTable, pathname);
   return routeTable.get(pathname);
 }
