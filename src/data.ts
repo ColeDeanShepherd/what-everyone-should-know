@@ -48,8 +48,8 @@ export function getPrevAndNextNodes(node: IBookNode): { prevNode: IBookNode | un
   };
 }
 
-export const interactiveMapWidthPx = 1280;
-export const interactiveMapHeightPx = 1280;
+export const interactiveMapWidthPx = 2000;
+export const interactiveMapHeightPx = 3000;
 
 export const bookData: IBookNode = {
   title: 'What Everyone Should Know',
@@ -65,18 +65,17 @@ export const bookData: IBookNode = {
   },
   children: [
     {
-      title: 'Speech',
-      contents: '',
-      children: []
-    },
-    {
-      title: 'Literacy',
+      title: 'Language',
       contents: '',
       renderInInteractiveMapFn: (node) => {
         return `
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
+              <li>
+                <div class="topic-name">How to Speak</div>
+                <div class="topic-icon">🗣️</div>
+              </li>
               <li>
                 <div class="topic-name">How to Read</div>
                 <div class="topic-icon">📖</div>
@@ -89,6 +88,11 @@ export const bookData: IBookNode = {
           </div>`;
       },
       children: [
+        {
+          title: 'How to Speak',
+          contents: '<p>Speaking is the most basic form of communication, and it is essential for expressing thoughts, feelings, and ideas. Whether you are giving a presentation, talking to a friend, or ordering food at a restaurant, speaking effectively is crucial for success in many areas of life.</p>',
+          children: []
+        },
         {
           title: 'How to Read',
           contents: '<p>This is an obvious one, and you already know how to do this if you\'re here. This is one of the most important skills to learn, and without it you cannot effectively function in the world or educate yourself with the vast body of written works in this world. Be sure your vocabulary and reading skills are at least at a high-school level.</p>',
@@ -104,6 +108,34 @@ export const bookData: IBookNode = {
     {
       title: 'Basic Math',
       contents: '<p>Basic math skills are fundamental for navigating daily life, from managing personal finances to understanding statistics in the news. Being comfortable with addition, subtraction, multiplication, division, fractions, and percentages is essential. These skills help you make informed decisions, solve everyday problems, and avoid being misled by misleading figures or calculations.</p>',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">Numbers</div>
+                <div class="topic-icon">2</div>
+              </li>
+              <li>
+                <div class="topic-name">Addition &amp; Subtraction</div>
+                <div class="topic-icon">➕➖</div>
+              </li>
+              <li>
+                <div class="topic-name">Multiplication &amp; Division</div>
+                <div class="topic-icon">✖️➗</div>
+              </li>
+              <li>
+                <div class="topic-name">Fractions</div>
+                <div class="topic-icon">🍕</div>
+              </li>
+              <li>
+                <div class="topic-name">Percentages</div>
+                <div class="topic-icon">%</div>
+              </li>
+            </ul>
+          </div>`;
+      },
       children: [
         {
           title: 'Numbers',
@@ -143,8 +175,40 @@ export const bookData: IBookNode = {
       ]
     },
     {
-      title: 'Personal Finance',
+      title: 'Finance',
       contents: '<p>For better or for worse, money runs the world, and your knowledge of personal finance can be the difference between a comfortable life and a life of struggle.</p>',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">Career</div>
+                <div class="topic-icon">👔</div>
+              </li>
+              <li>
+                <div class="topic-name">Benefits/Insurance</div>
+                <div class="topic-icon">🏥</div>
+              </li>
+              <li>
+                <div class="topic-name">Credit/Loans</div>
+                <div class="topic-icon">💳</div>
+              </li>
+              <li>
+                <div class="topic-name">Taxes</div>
+                <div class="topic-icon">🧾</div>
+              </li>
+              <li>
+                <div class="topic-name">Savings, Investing &amp; Retirement</div>
+                <div class="topic-icon">📈</div>
+              </li>
+              <li>
+                <div class="topic-name">Gambling</div>
+                <div class="topic-icon">🎲</div>
+              </li>
+            </ul>
+          </div>`;
+      },
       children: [
         {
           title: 'Budgeting',
@@ -240,6 +304,54 @@ export const bookData: IBookNode = {
     {
       title: 'Health',
       contents: '',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">Diet</div>
+                <div class="topic-icon">🍉</div>
+              </li>
+              <li>
+                <div class="topic-name">Exercise</div>
+                <div class="topic-icon">🏃‍♂️‍➡️</div>
+              </li>
+              <li>
+                <div class="topic-name">Sleep</div>
+                <div class="topic-icon">😴</div>
+              </li>
+              <li>
+                <div class="topic-name">Hygiene</div>
+                <div class="topic-icon">🚿</div>
+              </li>
+              <li>
+                <div class="topic-name">Checkups &amp; Vaccines</div>
+                <div class="topic-icon">🧑‍⚕️</div>
+              </li>
+              <li>
+                <div class="topic-name">Mental Health</div>
+                <div class="topic-icon">🧠</div>
+              </li>
+              <li>
+                <div class="topic-name">First Aid</div>
+                <div class="topic-icon">🩹</div>
+              </li>
+              <li>
+                <div class="topic-name">Treating Illness</div>
+                <div class="topic-icon">😷</div>
+              </li>
+              <li>
+                <div class="topic-name">Safe sex</div>
+                <div class="topic-icon">🍆</div>
+              </li>
+              <li>
+                <div class="topic-name">Drugs &amp; Alcohol</div>
+                <div class="topic-icon">💊🍺</div>
+              </li>
+            </ul>
+          </div>`;
+      },
       children: []
     },
     {
@@ -342,6 +454,135 @@ export const bookData: IBookNode = {
           children: []
         },
       ]
+    },
+    {
+      title: 'Technology',
+      contents: '',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">Basic Computer Skills</div>
+                <div class="topic-icon">💻</div>
+              </li>
+              <li>
+                <div class="topic-name">Cybersecurity</div>
+                <div class="topic-icon">🔒</div>
+              </li>
+            </ul>
+          </div>`;
+      },
+      children: []
+    },
+    {
+      title: 'Emotional &amp; Social Intelligence',
+      contents: '',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">Conflict Management</div>
+                <div class="topic-icon">🤼</div>
+              </li>
+              <li>
+                <div class="topic-name">The Golden Rule</div>
+                <div class="topic-icon">👑</div>
+              </li>
+            </ul>
+          </div>`;
+      },
+      children: []
+    },
+    {
+      title: 'How to Learn',
+      contents: '',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">AI &amp; Search Engines</div>
+                <div class="topic-icon">🤖</div>
+              </li>
+              <li>
+                <div class="topic-name">Memorization</div>
+                <div class="topic-icon">🧠</div>
+              </li>
+              <li>
+                <div class="topic-name">Source &amp; Fact Checking</div>
+                <div class="topic-icon">🔍</div>
+              </li>
+            </ul>
+          </div>`;
+      },
+      children: []
+    },
+    {
+      title: 'Mastering your Mind',
+      contents: '',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">Dopamine</div>
+                <div class="topic-icon">🧠</div>
+              </li>
+              <li>
+                <div class="topic-name">Logical Fallacies</div>
+                <div class="topic-icon">🧠</div>
+              </li>
+              <li>
+                <div class="topic-name">Cognitive Bias</div>
+                <div class="topic-icon">🧠</div>
+              </li>
+              <li>
+                <div class="topic-name">Defense Mechanisms</div>
+                <div class="topic-icon">🧠</div>
+              </li>
+            </ul>
+          </div>`;
+      },
+      children: []
+    },
+    {
+      title: 'Time Management',
+      contents: '',
+      renderInInteractiveMapFn: (node) => {
+        return `
+          <div class="broad-topic">
+            <h3>${node.title}</h3>
+            <ul>
+              <li>
+                <div class="topic-name">Prioritization</div>
+                <div class="topic-icon">📅</div>
+              </li>
+              <li>
+                <div class="topic-name">Breaks</div>
+                <div class="topic-icon">🛋️</div>
+              </li>
+              <li>
+                <div class="topic-name">Procrastination</div>
+                <div class="topic-icon">🛋️</div>
+              </li>
+              <li>
+                <div class="topic-name">Timeboxing</div>
+                <div class="topic-icon">📦</div>
+              </li>
+              <li>
+                <div class="topic-name">Multitasking</div>
+                <div class="topic-icon">📦</div>
+              </li>
+            </ul>
+          </div>`;
+      },
+      children: []
     }
   ]
 };
