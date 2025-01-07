@@ -3,18 +3,19 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { getPathToNode as getPathToNode, getPrevAndNextNodes, IBookNode } from "./data";
 import { nodePathname } from './router';
+import { div, elemsFromRawHtml } from './ui-core';
 
-export function renderBookNodePageHTML(node: IBookNode): string {
+export function renderBookNodePageHTML(node: IBookNode): Node {
   const { prevNode, nextNode } = getPrevAndNextNodes(node);
 
-  return `
+  return div(elemsFromRawHtml(`
     ${renderBreadcrumbsHTML(node)}
     ${renderBookNodeHTML(node)}
     <div class="prev-next-links">
       <div>${(prevNode !== undefined) ? `<a href="${nodePathname(prevNode)}"><i class="bi bi-chevron-left"></i> Previous (${prevNode.title})</a>` : ''}</div>
       <div>${(nextNode !== undefined) ? `<a href="${nodePathname(nextNode)}">Next (${nextNode.title}) <i class="bi bi-chevron-right"></i></a>` : ''}</div>
     </div>
-  `;
+  `));
 }
 
 export function renderBreadcrumbsHTML(node: IBookNode): string {

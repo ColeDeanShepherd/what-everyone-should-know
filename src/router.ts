@@ -2,7 +2,7 @@ import { getPathToNode, IBookNode } from "./data";
 
 export interface IRouteInfo {
   title: string;
-  renderHTMLFn: () => string;
+  renderFn: () => Node;
 }
 
 function titleToRoutePart(title: string): string {

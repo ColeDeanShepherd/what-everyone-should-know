@@ -1,9 +1,11 @@
+import { div, elemsFromRawHtml, h1, h2, h3, li, text, ul } from "./ui-core";
+
 export interface IBookNode {
   title: string;
   contents: string;
   children: IBookNode[];
 
-  renderInInteractiveMapFn?: (node: IBookNode) => string;
+  renderInInteractiveMapFn?: (node: IBookNode) => Node;
 
   parent?: IBookNode;
 }
@@ -57,18 +59,17 @@ export const bookData: IBookNode = {
     <h2>By: Cole Shepherd</h2>
     <p>There's a lot we need to know to be happy, healthy, good people in today's society, and unfortunately we learn very little of it in school. This book is an attempt to cover all of this information at a high level in an unbiased way, and fill in the gaps left by our school system.</p>`,
   renderInInteractiveMapFn: (node) => {
-    return `
-      <div style="text-align: center;">
-        <h1 style="margin-top: 0; margin-bottom: 0;">${node.title}</h1>
-        <h2>By: Cole Shepherd</h2>
-      </div>`;
+    return div({ style: 'text-align: center;' }, [
+      h1({ style: 'margin-top: 0; margin-bottom: 0;' }, [ text(node.title) ]),
+      h2([ text('By: Cole Shepherd') ])
+    ]);
   },
   children: [
     {
       title: 'Language',
       contents: '',
       renderInInteractiveMapFn: (node) => {
-        return `
+        return elemsFromRawHtml(`
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
@@ -85,7 +86,7 @@ export const bookData: IBookNode = {
                 <div class="topic-icon">✍️</div>
               </li>
             </ul>
-          </div>`;
+          </div>`)[0];
       },
       children: [
         {
@@ -109,7 +110,7 @@ export const bookData: IBookNode = {
       title: 'Basic Math',
       contents: '<p>Basic math skills are fundamental for navigating daily life, from managing personal finances to understanding statistics in the news. Being comfortable with addition, subtraction, multiplication, division, fractions, and percentages is essential. These skills help you make informed decisions, solve everyday problems, and avoid being misled by misleading figures or calculations.</p>',
       renderInInteractiveMapFn: (node) => {
-        return `
+        return elemsFromRawHtml(`
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
@@ -134,7 +135,7 @@ export const bookData: IBookNode = {
                 <div class="topic-icon">%</div>
               </li>
             </ul>
-          </div>`;
+          </div>`)[0];
       },
       children: [
         {
@@ -178,7 +179,7 @@ export const bookData: IBookNode = {
       title: 'Finance',
       contents: '<p>For better or for worse, money runs the world, and your knowledge of personal finance can be the difference between a comfortable life and a life of struggle.</p>',
       renderInInteractiveMapFn: (node) => {
-        return `
+        return elemsFromRawHtml(`
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
@@ -207,7 +208,7 @@ export const bookData: IBookNode = {
                 <div class="topic-icon">🎲</div>
               </li>
             </ul>
-          </div>`;
+          </div>`)[0];
       },
       children: [
         {
@@ -305,15 +306,17 @@ export const bookData: IBookNode = {
       title: 'Health',
       contents: '',
       renderInInteractiveMapFn: (node) => {
-        return `
-          <div class="broad-topic">
-            <h3>${node.title}</h3>
-            <ul>
-              <li>
-                <div class="topic-name">Diet</div>
-                <div class="topic-icon">🍉</div>
-              </li>
-              <li>
+        return div(
+          { class: 'broad-topic' },
+          [
+            h3([ text(node.title) ]),
+            ul([
+              li({ onClick: e => console.log('Diet clicked!') }, [
+                div({ class: 'topic-name' }, [ text('Diet') ]),
+                div({ class: 'topic-icon' }, [ text('🍉') ])
+              ]),
+              ...elemsFromRawHtml(`
+                <li>
                 <div class="topic-name">Exercise</div>
                 <div class="topic-icon">🏃‍♂️‍➡️</div>
               </li>
@@ -348,9 +351,10 @@ export const bookData: IBookNode = {
               <li>
                 <div class="topic-name">Drugs &amp; Alcohol</div>
                 <div class="topic-icon">💊🍺</div>
-              </li>
-            </ul>
-          </div>`;
+              </li>`)
+            ])
+          ]
+        );
       },
       children: []
     },
@@ -459,7 +463,7 @@ export const bookData: IBookNode = {
       title: 'Technology',
       contents: '',
       renderInInteractiveMapFn: (node) => {
-        return `
+        return elemsFromRawHtml(`
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
@@ -472,7 +476,7 @@ export const bookData: IBookNode = {
                 <div class="topic-icon">🔒</div>
               </li>
             </ul>
-          </div>`;
+          </div>`)[0];
       },
       children: []
     },
@@ -480,7 +484,7 @@ export const bookData: IBookNode = {
       title: 'Emotional &amp; Social Intelligence',
       contents: '',
       renderInInteractiveMapFn: (node) => {
-        return `
+        return elemsFromRawHtml(`
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
@@ -493,7 +497,7 @@ export const bookData: IBookNode = {
                 <div class="topic-icon">👑</div>
               </li>
             </ul>
-          </div>`;
+          </div>`)[0];
       },
       children: []
     },
@@ -501,7 +505,7 @@ export const bookData: IBookNode = {
       title: 'How to Learn',
       contents: '',
       renderInInteractiveMapFn: (node) => {
-        return `
+        return elemsFromRawHtml(`
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
@@ -518,7 +522,7 @@ export const bookData: IBookNode = {
                 <div class="topic-icon">🔍</div>
               </li>
             </ul>
-          </div>`;
+          </div>`)[0];
       },
       children: []
     },
@@ -526,7 +530,7 @@ export const bookData: IBookNode = {
       title: 'Mastering your Mind',
       contents: '',
       renderInInteractiveMapFn: (node) => {
-        return `
+        return elemsFromRawHtml(`
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
@@ -547,7 +551,7 @@ export const bookData: IBookNode = {
                 <div class="topic-icon">🧠</div>
               </li>
             </ul>
-          </div>`;
+          </div>`)[0];
       },
       children: []
     },
@@ -555,7 +559,7 @@ export const bookData: IBookNode = {
       title: 'Time Management',
       contents: '',
       renderInInteractiveMapFn: (node) => {
-        return `
+        return elemsFromRawHtml(`
           <div class="broad-topic">
             <h3>${node.title}</h3>
             <ul>
@@ -580,7 +584,7 @@ export const bookData: IBookNode = {
                 <div class="topic-icon">📦</div>
               </li>
             </ul>
-          </div>`;
+          </div>`)[0];
       },
       children: []
     }

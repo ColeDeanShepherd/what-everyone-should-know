@@ -1,6 +1,7 @@
 import { bookData, getOrderedNodes, IBookNode, interactiveMapHeightPx, interactiveMapWidthPx } from './data.ts';
-import { renderBookNodePageHTML } from './ui.ts';
+import { renderBookNodePageHTML as renderBookNodePage } from './ui.ts';
 import { getRouteInfo, IRouteInfo, nodePathToPageTitle, nodePathToPathname } from './router.ts';
+import { div } from './ui-core.ts';
 
 export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo> {
   const routeTable = new Map<string, IRouteInfo>();
@@ -13,7 +14,7 @@ export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo>
       pathname,
       {
         title: nodePathToPageTitle(ancestorNodes),
-        renderHTMLFn: () => renderBookNodePageHTML(node)
+        renderFn: () => renderBookNodePage(node)
       }
     );
     node.children.forEach(recurse);
@@ -33,19 +34,20 @@ function run() {
     '/interactive-map',
     {
       title: 'Interactive Map - What Everyone Should Know',
-      renderHTMLFn: () => {
-        const container = document.createElement('div');
-        container.className = 'interactive-map';
-        container.style.width = `${interactiveMapWidthPx}px`;
-        container.style.height = `${interactiveMapHeightPx}px`;
+      renderFn: () => {
+        const container = div({
+          class: 'interactive-map',
+          style: `width: ${interactiveMapWidthPx}px; height: ${interactiveMapHeightPx}px;`
+        });
 
-        getOrderedNodes(bookData).forEach(node => {
+        const orderedNodes = getOrderedNodes(bookData);
+        orderedNodes.forEach(node => {
           if (node.renderInInteractiveMapFn) {
-            container.innerHTML += node.renderInInteractiveMapFn(node);
+            container.appendChild(node.renderInInteractiveMapFn(node));
           }
         });
 
-        return container.outerHTML;
+        return container;
       }
     });
   const currentPathname = window.location.pathname;
@@ -58,7 +60,7 @@ function run() {
   }
   
   document.title = routeInfo.title;
-  appContainer.innerHTML = routeInfo.renderHTMLFn();
+  appContainer.replaceChildren(routeInfo.renderFn());
 }
 
 run();
