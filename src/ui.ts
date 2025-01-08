@@ -3,7 +3,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { getPathToNode as getPathToNode, getPrevAndNextNodes, IBookNode } from "./data";
 import { nodePathname } from './router';
-import { div, elemsFromRawHtml } from './lib/ui-core';
+import { div, elemsFromRawHtml } from './lib/html-utils';
 
 export interface IUIGlobals {
   overlayContainer: HTMLElement | undefined;

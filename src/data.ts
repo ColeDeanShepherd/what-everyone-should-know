@@ -1,5 +1,5 @@
 import { uiGlobals, unhideElement } from "./ui";
-import { div, elemsFromRawHtml, h1, h2, h3, li, text, ul } from "./lib/ui-core";
+import { div, elemsFromRawHtml, h1, h2, h3, li, text, ul } from "./lib/html-utils";
 
 export interface IBookNode {
   title: string;
