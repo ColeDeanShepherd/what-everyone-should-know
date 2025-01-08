@@ -1,3 +1,4 @@
+import { uiGlobals, unhideElement } from "./ui";
 import { div, elemsFromRawHtml, h1, h2, h3, li, text, ul } from "./ui-core";
 
 export interface IBookNode {
@@ -311,47 +312,47 @@ export const bookData: IBookNode = {
           [
             h3([ text(node.title) ]),
             ul([
-              li({ onClick: e => console.log('Diet clicked!') }, [
+              li({ onClick: e => unhideElement(uiGlobals.overlayContainer!) }, [
                 div({ class: 'topic-name' }, [ text('Diet') ]),
                 div({ class: 'topic-icon' }, [ text('🍉') ])
               ]),
               ...elemsFromRawHtml(`
                 <li>
-                <div class="topic-name">Exercise</div>
-                <div class="topic-icon">🏃‍♂️‍➡️</div>
-              </li>
-              <li>
-                <div class="topic-name">Sleep</div>
-                <div class="topic-icon">😴</div>
-              </li>
-              <li>
-                <div class="topic-name">Hygiene</div>
-                <div class="topic-icon">🚿</div>
-              </li>
-              <li>
-                <div class="topic-name">Checkups &amp; Vaccines</div>
-                <div class="topic-icon">🧑‍⚕️</div>
-              </li>
-              <li>
-                <div class="topic-name">Mental Health</div>
-                <div class="topic-icon">🧠</div>
-              </li>
-              <li>
-                <div class="topic-name">First Aid</div>
-                <div class="topic-icon">🩹</div>
-              </li>
-              <li>
-                <div class="topic-name">Treating Illness</div>
-                <div class="topic-icon">😷</div>
-              </li>
-              <li>
-                <div class="topic-name">Safe sex</div>
-                <div class="topic-icon">🍆</div>
-              </li>
-              <li>
-                <div class="topic-name">Drugs &amp; Alcohol</div>
-                <div class="topic-icon">💊🍺</div>
-              </li>`)
+                  <div class="topic-name">Exercise</div>
+                  <div class="topic-icon">🏃‍♂️‍➡️</div>
+                </li>
+                <li>
+                  <div class="topic-name">Sleep</div>
+                  <div class="topic-icon">😴</div>
+                </li>
+                <li>
+                  <div class="topic-name">Hygiene</div>
+                  <div class="topic-icon">🚿</div>
+                </li>
+                <li>
+                  <div class="topic-name">Checkups &amp; Vaccines</div>
+                  <div class="topic-icon">🧑‍⚕️</div>
+                </li>
+                <li>
+                  <div class="topic-name">Mental Health</div>
+                  <div class="topic-icon">🧠</div>
+                </li>
+                <li>
+                  <div class="topic-name">First Aid</div>
+                  <div class="topic-icon">🩹</div>
+                </li>
+                <li>
+                  <div class="topic-name">Treating Illness</div>
+                  <div class="topic-icon">😷</div>
+                </li>
+                <li>
+                  <div class="topic-name">Safe sex</div>
+                  <div class="topic-icon">🍆</div>
+                </li>
+                <li>
+                  <div class="topic-name">Drugs &amp; Alcohol</div>
+                  <div class="topic-icon">💊🍺</div>
+                </li>`)
             ])
           ]
         );

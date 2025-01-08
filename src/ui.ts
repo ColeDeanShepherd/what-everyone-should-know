@@ -5,6 +5,22 @@ import { getPathToNode as getPathToNode, getPrevAndNextNodes, IBookNode } from "
 import { nodePathname } from './router';
 import { div, elemsFromRawHtml } from './ui-core';
 
+export interface IUIGlobals {
+  overlayContainer: HTMLElement | undefined;
+}
+
+export const uiGlobals: IUIGlobals = {
+  overlayContainer: undefined
+};
+
+export function unhideElement(element: HTMLElement): void {
+  element.classList.remove('hidden');
+}
+
+export function hideElement(element: HTMLElement): void {
+  element.classList.add('hidden');
+}
+
 export function renderBookNodePageHTML(node: IBookNode): Node {
   const { prevNode, nextNode } = getPrevAndNextNodes(node);
 

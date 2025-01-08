@@ -1,7 +1,7 @@
 import { bookData, getOrderedNodes, IBookNode, interactiveMapHeightPx, interactiveMapWidthPx } from './data.ts';
-import { renderBookNodePageHTML as renderBookNodePage } from './ui.ts';
+import { hideElement, renderBookNodePageHTML as renderBookNodePage, uiGlobals } from './ui.ts';
 import { getRouteInfo, IRouteInfo, nodePathToPageTitle, nodePathToPathname } from './router.ts';
-import { div } from './ui-core.ts';
+import { div, h1, text } from './ui-core.ts';
 
 export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo> {
   const routeTable = new Map<string, IRouteInfo>();
@@ -28,7 +28,15 @@ export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo>
 
 function run() {
   const appContainer = document.querySelector<HTMLDivElement>('#app')!;
+
+  const routeContainer = div();
+  appContainer.appendChild(routeContainer);
   
+  const overlayContainer = div({ onClick: () => hideElement(uiGlobals.overlayContainer!), class: 'overlay hidden' });
+  appContainer.appendChild(overlayContainer);
+
+  uiGlobals.overlayContainer = overlayContainer;
+
   const routeTable = generateRouteTable(bookData);
   routeTable.set(
     '/interactive-map',
@@ -55,12 +63,14 @@ function run() {
 
   if (routeInfo === undefined) {
     document.title = 'Page Not Found - What Everyone Should Know';
-    appContainer.innerHTML = '<h1>Page Not Found</h1>';
+    routeContainer.replaceChildren(
+      h1([ text('Page Not Found') ])
+    );
     return;
   }
   
   document.title = routeInfo.title;
-  appContainer.replaceChildren(routeInfo.renderFn());
+  routeContainer.replaceChildren(routeInfo.renderFn());
 }
 
 run();
