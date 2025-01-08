@@ -1,7 +1,7 @@
 import { bookData, getOrderedNodes, IBookNode, interactiveMapHeightPx, interactiveMapWidthPx } from './data.ts';
 import { hideElement, renderBookNodePageHTML as renderBookNodePage, uiGlobals } from './ui.ts';
 import { getRouteInfo, IRouteInfo, nodePathToPageTitle, nodePathToPathname } from './router.ts';
-import { div, h1, text } from './ui-core.ts';
+import { div, h1, text } from './lib/ui-core.ts';
 
 export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo> {
   const routeTable = new Map<string, IRouteInfo>();
