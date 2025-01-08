@@ -1,7 +1,7 @@
 import { bookData, getOrderedNodes, IBookNode, interactiveMapHeightPx, interactiveMapWidthPx } from './data.ts';
-import { hideElement, renderBookNodePageHTML as renderBookNodePage, uiGlobals } from './ui.ts';
+import { activateRoute, renderBookNodePageHTML as renderBookNodePage, scaffoldUi } from './ui.ts';
 import { getRouteInfo, IRouteInfo, nodePathToPageTitle, nodePathToPathname } from './router.ts';
-import { div, h1, text } from './lib/html-utils.ts';
+import { div } from './lib/html-utils.ts';
 
 export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo> {
   const routeTable = new Map<string, IRouteInfo>();
@@ -27,17 +27,6 @@ export function generateRouteTable(bookData: IBookNode): Map<string, IRouteInfo>
 }
 
 function run() {
-  const appContainer = div({ id: 'app' });
-  document.body.appendChild(appContainer);
-
-  const routeContainer = div();
-  appContainer.appendChild(routeContainer);
-  
-  const overlayContainer = div({ onClick: () => hideElement(uiGlobals.overlayContainer!), class: 'overlay hidden' });
-  appContainer.appendChild(overlayContainer);
-
-  uiGlobals.overlayContainer = overlayContainer;
-
   const routeTable = generateRouteTable(bookData);
   routeTable.set(
     '/interactive-map',
@@ -59,19 +48,13 @@ function run() {
         return container;
       }
     });
+  
+  scaffoldUi();
+  
   const currentPathname = window.location.pathname;
   const routeInfo = getRouteInfo(routeTable, currentPathname);
 
-  if (routeInfo === undefined) {
-    document.title = 'Page Not Found - What Everyone Should Know';
-    routeContainer.replaceChildren(
-      h1([ text('Page Not Found') ])
-    );
-    return;
-  }
-  
-  document.title = routeInfo.title;
-  routeContainer.replaceChildren(routeInfo.renderFn());
+  activateRoute(routeInfo);
 }
 
 run();

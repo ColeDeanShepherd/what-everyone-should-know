@@ -2,16 +2,44 @@ import './style.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { getPathToNode as getPathToNode, getPrevAndNextNodes, IBookNode } from "./data";
-import { nodePathname } from './router';
-import { div, elemsFromRawHtml } from './lib/html-utils';
+import { IRouteInfo, nodePathname } from './router';
+import { div, elemsFromRawHtml, h1, text } from './lib/html-utils';
 
 export interface IUIGlobals {
+  routeContainer: HTMLElement | undefined;
   overlayContainer: HTMLElement | undefined;
 }
 
 export const uiGlobals: IUIGlobals = {
+  routeContainer: undefined,
   overlayContainer: undefined
 };
+
+export function scaffoldUi() {
+  const appContainer = div({ id: 'app' });
+  document.body.appendChild(appContainer);
+
+  const routeContainer = div();
+  appContainer.appendChild(routeContainer);
+  uiGlobals.routeContainer = routeContainer;
+  
+  const overlayContainer = div({ onClick: () => hideElement(uiGlobals.overlayContainer!), class: 'overlay hidden' });
+  appContainer.appendChild(overlayContainer);
+  uiGlobals.overlayContainer = overlayContainer;
+}
+
+export function activateRoute(routeInfo: IRouteInfo | undefined) {
+  if (routeInfo === undefined) {
+    document.title = 'Page Not Found - What Everyone Should Know';
+    uiGlobals.routeContainer!.replaceChildren(
+      h1([ text('Page Not Found') ])
+    );
+    return;
+  }
+  
+  document.title = routeInfo.title;
+  uiGlobals.routeContainer!.replaceChildren(routeInfo.renderFn());
+}
 
 export function unhideElement(element: HTMLElement): void {
   element.classList.remove('hidden');
