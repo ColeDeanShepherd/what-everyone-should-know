@@ -1,5 +1,5 @@
 import { closeOverlay, openOverlay, uiGlobals, unhideElement } from "./ui";
-import { div, elemsFromRawHtml, h1, h2, h3, i, li, p, span, text, ul } from "./lib/html-utils";
+import { details, div, elemsFromRawHtml, h1, h2, h3, i, li, p, span, summary, text, ul } from "./lib/html-utils";
 
 export interface IBookNode {
   title: string;
@@ -326,7 +326,10 @@ export const bookData: IBookNode = {
                       [
                         i({ class: 'bi bi-x' })
                       ]),
-                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      details([
+                        summary([ text('Section') ]),
+                        p([ text('Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet Diet ') ]),
+                      ]),
                       p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
                       p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
                       p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
