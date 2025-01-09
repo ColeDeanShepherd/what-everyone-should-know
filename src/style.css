@@ -149,9 +149,19 @@ button:focus-visible {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   z-index: 1000;
+}
+
+.close-button {
+  padding: 0.5em;
+  border-radius: 8px;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
 }
 
 @media (prefers-color-scheme: light) {

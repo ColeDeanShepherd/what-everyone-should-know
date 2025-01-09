@@ -1,5 +1,5 @@
-import { uiGlobals, unhideElement } from "./ui";
-import { div, elemsFromRawHtml, h1, h2, h3, li, text, ul } from "./lib/html-utils";
+import { closeOverlay, openOverlay, uiGlobals, unhideElement } from "./ui";
+import { div, elemsFromRawHtml, h1, h2, h3, i, li, p, span, text, ul } from "./lib/html-utils";
 
 export interface IBookNode {
   title: string;
@@ -312,7 +312,39 @@ export const bookData: IBookNode = {
           [
             h3([ text(node.title) ]),
             ul([
-              li({ onClick: e => unhideElement(uiGlobals.overlayContainer!) }, [
+              li({
+                onClick: e => {
+                  const contentContainer = div(
+                    {
+                      style: "width: 640px; height: 100%; background-color: gray; overflow-y: scroll"
+                    },
+                    [
+                      span({
+                        class: 'close-button',
+                        onClick: () => closeOverlay()
+                      },
+                      [
+                        i({ class: 'bi bi-x' })
+                      ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ]),
+                      p([ text('Diet is the food and drink that we consume on a daily basis. It is important to eat a balanced diet that includes a variety of foods to ensure that you are getting all the nutrients that your body needs to function properly.') ])
+                    ]
+                  );
+
+                  openOverlay(contentContainer);
+                }
+              }, [
                 div({ class: 'topic-name' }, [ text('Diet') ]),
                 div({ class: 'topic-icon' }, [ text('🍉') ])
               ]),

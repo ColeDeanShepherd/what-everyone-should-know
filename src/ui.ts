@@ -23,7 +23,14 @@ export function scaffoldUi() {
   appContainer.appendChild(routeContainer);
   uiGlobals.routeContainer = routeContainer;
   
-  const overlayContainer = div({ onClick: () => hideElement(uiGlobals.overlayContainer!), class: 'overlay hidden' });
+  const overlayContainer = div({
+    onClick: e => {
+      if ((e.target as HTMLElement) === overlayContainer) {
+        closeOverlay();
+      }
+    },
+    class: 'overlay hidden'
+  });
   appContainer.appendChild(overlayContainer);
   uiGlobals.overlayContainer = overlayContainer;
 }
@@ -47,6 +54,15 @@ export function unhideElement(element: HTMLElement): void {
 
 export function hideElement(element: HTMLElement): void {
   element.classList.add('hidden');
+}
+
+export function openOverlay(element: HTMLElement): void {
+  uiGlobals.overlayContainer!.replaceChildren(element);
+  unhideElement(uiGlobals.overlayContainer!);
+}
+
+export function closeOverlay(): void {
+  hideElement(uiGlobals.overlayContainer!);
 }
 
 export function renderBookNodePageHTML(node: IBookNode): Node {
